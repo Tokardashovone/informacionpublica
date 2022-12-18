@@ -5,6 +5,13 @@ const FileController = require('./controller/FileController');
 const fileController = new FileController();
 const path = require('path');
 const fs = require('fs');
+const hbs = require('hbs');
+
+//Middelware necesarios
+app.use(express.json());
+app.use(express.static("public"));
+app.use(fileupload());
+
 //Conectarnos a la base de datos
 let mongoose = require('mongoose');
 
@@ -29,11 +36,21 @@ mongoose.connect('mongodb://localhost:27017/informacion', options, (err) => {
 });
 
 
+//Configuración motor de plantilla
+hbs.registerPartials(__dirname + '/views/partials');
 
-app.use(express.json());
-app.use(express.static("public"));
-app.use(fileupload());
+app.set('view engine', 'hbs');
+app.set('views', __dirname + "/views");
 
+
+
+//pagina no encontrada
+app.get('*', (req,res) => {
+    res.status(404).render("404", {
+        titulo: "404",
+        descripcion: 'Página no encontrada'
+    })
+})
 
 app.post('/subir-archivo', fileController.subirArchivo);
 app.post('/titulo', (req,res) => {
