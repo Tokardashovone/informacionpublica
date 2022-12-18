@@ -1,0 +1,37 @@
+06-04-22
+--------
+1 Cake: 8.489$
+Cakes: 6,906.74300
+Dolares: 58,622.61$
+Porcentaje: 63.24%
+
+01-06-22
+--------
+cakes 8137
+cake 4.56
+dolares 37135
+porcentaje 112%
+
+05-06-22
+--------
+cakes 8220
+cake 4.34
+dolares 35720
+porcentaje 110%
+
+25-06-22
+--------
+cakes 8594
+cake 3.38
+dolares 28966
+porcentaje 90%
+
+11-09-22
+--------
+cakes 9799
+cake 4.5
+dolares 44086
+porcentaje 64.5%
+%/dia 17.3
+valor BTC 21676.15
+Equivalente BTC: 2.034 
