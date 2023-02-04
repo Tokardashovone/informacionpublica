@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">
+    
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row  p-5 m-5">
+            <div class="col-12 p-5 text-white bg-success">
+
+                <h1 class="mb-3 text-danger">LOTERÍA DE CRIPTOMONEDAS</h1>
+                <h2 class="mb-3 text-warning">Ganar 8000 $ al invertir 10 $</h2>
+                <p><strong><u>En que consiste:</u></strong></p>
+                <p>Vamos a realizar una lotería en la que pueden <strong>participar sólo 1000 personas</strong> cada vez, lo que aumenta mucho la probabilidad de ganar</p>
+                <p>Cada participante <strong>deposita 10 $ en USDT (BEP20) Theter</strong> , que se almacenará en la dirección pública 0x96d0CEF83079a3D5D33aF17A709837c9fAc051f2 de la red BSC</p>
+                <p>Debe rellenar el formulario con vuestra dirección publica desde la que se mandan los 10 $ y que debe ser la misma donde se recibirá el premio el que lo gane</p>
+                <p>El número con el que se participa se obtiene en función del orden en el que se rellene el formulario para participar en el  <strong>sorteo de los 8000 $ </strong> (el 80% del dinero acumulado)</p>
+
+                <p>Todos los números tienen la misma probabilidad de salir como pueden comprobar con el código fuente utilizado, y que usted mismo pueden reproducir</p>
+                <p>Todo es visible en el explorador de la Red Binance Smart Chain BSC, para mantener completa transparencia, y además se expondrá en la página web, donde también se va actualizando con todos los participantes que se verifique el correcto depósito de los 10 $</p>
+                <p>Tengan <strong> completa precaución al rellenar el formulario</strong> con su dirección pública, porque en caso de error en el deposito de dinero quedará anulada la participación, quedando nuevamente libre dicho número.</p>
+                <p>Una vez se completen los 1000 participantes y se compruebe que cada una de las direcciones han aportado correctamente las criptomonedas en la dirección indicada se procederá al sorteo, que se realizará con el código más abajo expuesto y se grabará en video y estará disponible en la página web</p>
+                <p>Posteriormente se mandará el bote de 8000 $ a la dirección con el número de orden igual al valor obtenido en el sorteo</p>
+                <p>Ante cualquier duda podeis escribir en el apartado de sugerencias de la web y se os resolverá</p>
+
+            </div>
+            <div class="col-12 bg-dark p-5">
+                <code>
+                    <pre class=" text-light">
+              
+                      //CODIGO QUE SE UTILIZA PARA OBTENER EL NUMERO AL AZAR.
+              //se puede reproducir este código 
+              // Función que obtiene un número aleatorio entre dos números dados: min y max
+              
+              function random(a, b){ 
+                  return Math.floor(Math.random()*(b-a+1)+a);
+              }
+              
+              console.log(random(0,9));
+              //Array que lleva la cuenta de los valores aparecidos n veces que se realiza la loteria:
+              let n = 10000 // veces que realizamos la loteria:
+              let valoresAparecidos = [];
+              for(let i = 0; i < n; i++){
+                  let aleatorio = random(0,999); 
+                  valoresAparecidos.push(aleatorio);
+              }
+              
+              //VERIFICACIÓN DE QUE LAS PROBABILIDADES DE OBTENCIÓN DE TODOS LOS NÚMEROS ES LA MISMA Y AL AZAR,
+              //SE APROXIMA A 1 CUANDO SE REPITE 1000 VECES Y A 10 CUANDO SE REPITE 10.000 VECES O A 100 CUANDO SE REPITE 100.000 VECES
+              //Y ASÍ SUCESIVAMENTE.
+              //Ordenamos el array de los valores aparecidos despues de las n veces de repetir la loteria
+              valoresAparecidos.sort(function(a,b){return a-b});
+              
+              
+              
+              let unicosElementos = [];
+              let almacenadorDeVecesRepetidas = [];
+              let contador = 1;
+              
+              for (let i = 0; i < valoresAparecidos.length; i++){
+                  if(valoresAparecidos[i+1] === valoresAparecidos[i]){
+                      contador++;
+                  }else{
+                      unicosElementos.push(valoresAparecidos[i]);
+                      almacenadorDeVecesRepetidas.push(contador);
+                      contador = 1;
+                  }
+              }
+              
+              for(let j = 0; j < unicosElementos.length; j++){
+                  //Mostramos las veces que aparecen los resultados de la loteria
+                  console.log(`Elvalor ${unicosElementos[j]} se repite ${almacenadorDeVecesRepetidas[j]}`);
+              }
+                  </pre>
+                  </code>
+            </div>
+            <div class="col-12 p-3  bg-info">
+                <h2><strong>Obtener números al azar</strong></h2>
+                <form>
+                    <div class="form-group">
+                      <label for="valorMinimo">Introduce el valor mínimo</label>
+                      <input type="number" class="form-control" id="valorMinimo">
+                    </div>
+                    <div class="form-group">
+                      <label for="valorMaximo">Introduce el valor máximo</label>
+                      <input type="number" class="form-control" id="valorMaximo">
+                    </div>
+                    <div class="form-group">
+                      <label for="numeroVecesLoteria">Introduce el número de veces que se repetirá la lotería</label>
+                      <input type="number" class="form-control" id="numeroVecesLoteria">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="row m-5">
+            <div class="col-12 p-5">
+                <div id="resultado">
+    
+                </div>
+            </div>
+        </div>
+        <div class="row m-5 bg-light p-5">
+            <div class="col">
+                <hr>
+                <h2 class="mb-5"><strong>Participación en la Lotería</strong></h2>
+                <form>
+                    <div class="form-group">
+                        <label for="valorMinimo">Introduce la dirección publica de tu wallet</label>
+                        <input type="text" class="form-control" id="direccion_publica">
+                    </div>
+                    
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <p class="mt-5">Después de introducir la dirección pública de tu wallet, <strong>realiza la transferencia desde esa dirección de 10$ en Theter USDT(BEP20) a nuestra dirección pública de depósito</strong></p>
+                <p>Acontinuación Aparecerá tu número de participante registrado, pendiente de validar la correcta transferencia</p>
+                <p>Copien correctamente tanto su dirección publica, como la dirección pública de recepción de los 10 $</p>
+                <p>Este proceso tardará tiempo, hasta ser validada la transferencia, y podamos comprobarla</p>
+                <p>No nos hacemos responsables de que se copien mal las direcciones públicas, tanto la del participante, como la de depósito. Porque lamentablemente serán eliminados del registro</p>
+
+            </div>
+        </div>
+        <div class="row m-5">
+            <div class="col-12 p-5">
+                <div id="resultado2">
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+      
+
+        let formulario = document.forms[0];
+
+
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let valorMinimo = parseInt(document.getElementById("valorMinimo").value);
+
+            let valorMaximo = parseInt(document.getElementById("valorMaximo").value);
+
+            let numeroVecesLoteria = parseInt(document.getElementById("numeroVecesLoteria").value);
+
+            ejecutarLoteria(valorMinimo,valorMaximo,numeroVecesLoteria);
+        });
+
+        function ejecutarLoteria(valorMinimo,valorMaximo,numeroVecesLoteria){
+
+                 //CODIGO QUE SE UTILIZA PARA OBTENER EL NUMERO AL AZAR.
+              //se puede reproducir este código 
+              // Función que obtiene un número aleatorio entre dos números dados: min y max
+              
+              function random(valorMinimo, valorMaximo){ 
+                  return Math.floor(Math.random()*(valorMaximo-valorMinimo+1)+valorMinimo);
+              }
+              
+              //Array que lleva la cuenta de los valores aparecidos n veces que se realiza la loteria:
+              //let n = 10000 // veces que realizamos la loteria:
+              let valoresAparecidos = [];
+              for(let i = 0; i < numeroVecesLoteria; i++){
+                  let aleatorio = random(valorMinimo,valorMaximo); 
+                  valoresAparecidos.push(aleatorio);
+              }
+              
+              //VERIFICACIÓN DE QUE LAS PROBABILIDADES DE OBTENCIÓN DE TODOS LOS NÚMEROS ES LA MISMA Y AL AZAR,
+              //SE APROXIMA A 1 CUANDO SE REPITE 1000 VECES Y A 10 CUANDO SE REPITE 10.000 VECES O A 100 CUANDO SE REPITE 100.000 VECES
+              //Y ASÍ SUCESIVAMENTE.
+              //Ordenamos el array de los valores aparecidos despues de las n veces de repetir la loteria
+              valoresAparecidos.sort(function(a,b){return a-b});
+              
+              
+              let unicosElementos = [];
+              let almacenadorDeVecesRepetidas = [];
+              let contador = 1;
+              
+              for (let i = 0; i < valoresAparecidos.length; i++){
+                  if(valoresAparecidos[i+1] === valoresAparecidos[i]){
+                      contador++;
+                  }else{
+                      unicosElementos.push(valoresAparecidos[i]);
+                      almacenadorDeVecesRepetidas.push(contador);
+                      contador = 1;
+                  }
+              }
+            
+              //Mostramos las veces que aparecen los resultados de la loteria
+
+              let contenido = "<table class = 'table-bordered table-dark'><thead><tr><th class= 'p-3'>Valores Loteria (ordenados)</th><th class='p-3'>Veces repetido</th></tr></thead><tbody>"
+              
+              for(let j = 0; j < unicosElementos.length; j++){
+                  //console.log(`Elvalor ${unicosElementos[j]} se repite ${almacenadorDeVecesRepetidas[j]}`);
+                  contenido += `<tr><td class = "p-3">${unicosElementos[j]}</td><td class = "p-3">${almacenadorDeVecesRepetidas[j]}</td></tr>`
+              }
+              contenido += "</tbody></table>"
+              document.getElementById('resultado').innerHTML = contenido;
+            }
+
+    </script>
+    <script src="./js/loteria.js"></script>
+  </body>
+</html>

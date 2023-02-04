@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="assets/Imagenes/tierra.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/jquery-3.6.0.js"></script>
+   
+   
+   
+   
+    <title>Publicar</title>
+</head>
+<body>
+    <div class="container-fluid pb-2">
+        <div class="row mb-5">
+            <div class="col">
+              <h1 class="display-1 text-center fw-bold p-3 bg-dark text-white">
+                Publicar
+              </h1>
+            </div>
+        </div>
+        <!-- Navegador -->
+      {{> navegador }}
+      
+        <div class="row m-3">
+            <div class="col">
+                <h2 class="fw-bold shadow-lg p-3 bg-body rounded text-center">
+                    Formulario de subida de archivos
+                </h2>
+            </div>
+        </div>
+        <div class="row m-5">
+            <div class="col p-3 text-justify">
+                <div class="mt-5">
+                  <p>Recordad que de momento sólo podemos subir archivos de tipo texto. Se admiten los archivos con formato .txt, .doc, .docx, .rtf y .odt</p>
+                  <p>La publicación es manual para asegurar que no se suben ningún tipo de malware o contenido malicioso. Y se hará lo más rápido posible. 
+                  </p>
+                </div>
+            </div>
+        </div>
+        <div class="row m-5">
+            <div class="col p-3 border border-primary rounded">
+                <form id="formulario" enctype="multipart/form-data" autocomplete="off">
+                      <div class="form-group mb-3">
+                        <label for="nombre">Nombre o Pseudonombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre o pseudonombre">
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="titulo">Titulo</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo" required>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="archivo">Subir archivo</label>
+                        <input type="file" class="form-control" id="archivo" placeholder="archivo" required>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="categoria">Categoría a la que pertenece el artículo</label>
+                        <input type="text" class="form-control" id="categoria" placeholder="Escribe a que categoría pertenece si es posible">
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="descripcion">Describe en uno o dos renglones</label>
+                        <input type="text" class="form-control" id="descripcion" placeholder="Escribe aqui la descripción de tu texto">
+                      </div>
+                      <div class="form-group mb-3">
+                        <input type="submit" class="form-control btn btn-primary" value="enviar">
+                      </div>
+                </form>
+                <div id="resultado"></div>
+            </div>
+        </div>
+       <!-- footer -->
+      {{> footer }}
+    </div>
+
+    <script src="./js/publicar.js"></script>
+</body>
+</html>

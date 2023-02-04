@@ -4,11 +4,12 @@ const { Schema } = mongoose;
 
 const tituloSchema = new Schema({
     nombre: String,
-    titulo : String, 
+    titulo : String,
+    descripcion : String, 
     categoria : String, 
     comentarios: [String],
-    link : String,
-    creado: Date
+    link: String,
+    fecha: String
 });
 
 const Titulo = mongoose.model('Titulo', tituloSchema)

@@ -1,39 +1,49 @@
 class FileController {
   subirArchivo = async (req, res, next) => {
-    try {
+    
       const archivo = req.files.archivo;
       const fileName = archivo.name;
       const path = __dirname + "/../uploads/" + fileName;
-      console.log('variable fileName',fileName);
 
-      try {
-        archivo.mv(path, (error) => {
-          if (error) {
-            console.error(error);
-            res.writeHead(500, {
-              "Content-Type": "application/json",
-            });
-            res.end(JSON.stringify({ status: "error", message: error }));
-            return;
+      console.log('***********INFORMACIÓN SOBRE EL mimetype************\n\n');
+      console.log(archivo.mimetype);
+      console.log('el tipo de dato de archivo.mimetype: ', typeof archivo.mimetype)
+      console.log('************FIN ARCHIVO************');
+
+      
+
+            if (archivo.mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || 
+            archivo.mimetype == 'application/rtf' || 
+            archivo.mimetype == 'application/vnd.oasis.opendocument.text' || 
+            archivo.mimetype == 'application/msword' ||
+            archivo.mimetype ==  'application/msword' ||
+            archivo.mimetype == 'text/plain'){
+              
+                              archivo.mv(path, (error) => {
+                                if (error) {
+                                  console.error(error);
+                                  res.writeHead(500, {
+                                    "Content-Type": "application/json",
+                                  });
+                                  res.end(JSON.stringify({ status: "error", message: error }));
+                                  return;
+                                }
+                                return res.status(200)
+                                  .send({ status: "success", path: fileName });
+                              });
+
+            }else{
+              res.status(500).json({
+                error: true,
+                message: 'NO SE ACEPTA ESE FORMATO',
+              });
+            }
           }
-          return res
-            .status(200)
-            .send({ status: "success", path: fileName });
-        });
+        }
 
-        //copiar el archivo desde uploads hasta publicaciones:
+                //copiar el archivo desde uploads hasta publicaciones:
        
 
-      } catch (e) {
-        res.status(500).json({
-          error: true,
-          message: e.toString(),
-        });
-      }
-    } catch (error) {
-        console.log(error);
-    }
-  };
-}
+     
 
 module.exports = FileController;

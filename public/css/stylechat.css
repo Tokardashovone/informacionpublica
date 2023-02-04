@@ -1,0 +1,11 @@
+.pointer:hover {
+    cursor: pointer;
+}
+
+.height35 {
+    height: 40rem;
+}
+
+.height50 {
+    min-height: 42rem;
+}

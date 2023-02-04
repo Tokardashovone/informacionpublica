@@ -21,7 +21,6 @@ const subirSugerencia = e => {
    })
     .then(data => {
       
-      console.log(data);
       location.reload();
       
    })
@@ -32,11 +31,9 @@ const subirSugerencia = e => {
  }
 
  window.addEventListener('load', ()=>{
-   console.log('carga el documento');
    fetch('/sugerenciasLista')
    .then(response => response.json())
    .then(data => {
-      console.log(data);
       let contenido = "";
       data.sugerencias.forEach(element => {
 

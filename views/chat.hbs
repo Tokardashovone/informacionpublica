@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="./assets/imagenes/tierra.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/stylechat.css">
+    <link rel="icon" href="assets/Imagenes/tierra.ico" type="image/x-icon" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Chat</title>
+  </head>
+  <body>
+    <div class="container-fluid pb-2 bg-dark overflow-hidden">
+      <form id="FormularioRegistro" class="row bg-white" autocomplete="off">
+        <div class="col-12 "> <h1 class="text-center text-center fw-bold p-3 mb-5 bg-dark text-white">CHATS</h1></div>
+        
+          <div class="col-8 col-md-9 text-end">
+              <label for="RegistroNombre" class="form-label">Registra aqui tu nombre</label>
+          </div>
+          <div class="col-4 col-md-3">
+            <input type="text" class="form-control" name="RegistroNombre" id="RegistroNombre" >
+          </div>
+        
+        
+      </form>
+      <div class="row bg-white p-5">
+        <div class="col border border-primary rounded p-3">
+          <nav class="nav">
+            <a class="nav-link active" aria-current="page" href="http://127.0.0.1:3000">Inicio</a>
+            <a class="nav-link" href="http://127.0.0.1:3000/publicar">Publicar</a>
+            <a class="nav-link" href="http://127.0.0.1:3000/biblioteca">Biblioteca</a>
+            <a class="nav-link" href="http://127.0.0.1:3000/chat">Chat</a>
+            <a class="nav-link" href="http://127.0.0.1:3000/sugerencias">Sugerencias</a>
+          </nav>
+        </div>
+      </div>
+      <div class="row height50 m-5 gx-2">
+        <div class="order-2 order-md-1 col-sm-6 col-md-2">
+          <div class="card m-5 m-md-0 height35">
+            <div class="card-header h3-md">Chats abiertos</div>
+            <div id="CajaChatsAbiertos" class="card-body overflow-auto">
+              <!-- <p class="pointer">Usuario - General</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="order-1 order-md-2 col-sm-12 col-md-8">
+          <div class="card height35">
+            <!--Card variable: Chat General/Privado-->
+            <div id="TituloChatAbierto" class="card-header h2 text-center"><!--TituloChatMensaje: usuario - usuario--></div>
+            <!--unico div variable desde el servidor-->
+            <div id="CajaMensajesGeneral" class="card-body overflow-auto">
+              <!-- <p>usuario: texto introducido por usuario</p> -->
+            </div>
+            <!--Fin Card variable-->
+            <div class="card-footer">
+              <form id="FormularioMensaje" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Envia mensaje" id="TextoMensaje" />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="order-3 order-md-3 col-sm-6 col-md-2">
+          <div class="card m-5 m-md-0 height35" >
+            <div class="card-header h3-md" id="UsuariosConectados">Usuarios conectados</div>
+            <div class="card-body overflow-auto" id="CajaUsuariosConectados">
+              <!-- <p class="pointer">Usuario conectado</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+         <!-- footer -->
+      {{> footer }}
+      </div>
+    </div>
+
+    
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"
+    ></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"
+    ></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"
+    ></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
